@@ -1,153 +1,243 @@
-/* === Variables globales pour couleurs et polices (issues de index.css) === */
+/* === Variables globales === */
 :root {
-  --main-green: #048B9A;        /* Couleur principale */
-  --hover-green: #02616B;       /* Couleur survol bouton */
-  --link-green: #048B9A;        /* Couleur des liens */
-  --light-bg: #EDE7E3;          /* Fond clair */
-  --neutral-text: #5F5F5F;      /* Texte secondaire */
-  --dark-text: #1e2124;         /* Texte principal */
+  --main-green: #048B9A;
+  --hover-green: #02616B;
+  --link-green: #048B9A;
+  --light-bg: #EDE7E3;
+  --neutral-text: #5F5F5F;
+  --dark-text: #1e2124;
+  --highlight-orange: orange;
+  --sidebar-width: 340px;
 }
 
 /* === Corps de la page === */
 body {
-  background-color: white;
-  font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  background-color: white;
   color: var(--dark-text);
+  height: 100%;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-/* === Conteneur principal === */
-.bibli-main {
-  padding: 2rem;
-  max-width: 1400px;
-  margin: auto;
-  background-color: var(--light-bg);
-}
-
-/* === Titre principal === */
+/* === En-tête de la bibliothèque === */
 .bibli-header {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 2rem 1rem 1rem;
+  background-color: white;
+  color: white;
 }
 
 .bibli-header h1 {
-  font-size: 2.5rem;
+  margin: 0 0 1rem;
+  font-size: 2rem;
   color: var(--main-green);
+}
+
+/* === Barre de recherche et tri === */
+#search-input {
+  width: 80%;
+  max-width: 600px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-sort-container input,
+.search-sort-container select {
+  font-size: 1rem;
+}
+
+.search-container,
+.sort-container {
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
-/* === Zone de tri et recherche === */
-.bibli-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-#sort-select,
-#search-input {
-  padding: 0.6rem 1rem;
+#sort-select {
+  height: 46px;
+  padding: 0.6rem 1.2rem;
   font-size: 1rem;
-  border: 2px solid var(--main-green);
-  border-radius: 25px;
-  background-color: white;
-  color: var(--dark-text);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--main-green);
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* === Conteneur de documents (scroll horizontal) === */
+/* === Liste de cartes scrollables === */
 .bibli-container {
+  flex: 1;
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 2rem;
-  padding: 1rem 0;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-/* === Carte de document === */
+/* === Carte document === */
 .bibli-card {
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 1rem;
-  min-width: 280px;
-  text-align: center;
-  transition: transform 0.2s;
-  border: 2px solid #e0e0e0;
-  flex-shrink: 0;
+  background-color: var(--light-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 280px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
 }
 
 .bibli-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-4px);
 }
 
-.doc-title {
+.bibli-card h2 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--main-green);
-  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .doc-img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  display: block;
 }
 
 .doc-link {
-  display: inline-block;
-  margin-top: 0.5rem;
-  background-color: var(--main-green);
-  color: white;
-  padding: 0.6rem 1.2rem;
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
+  color: var(--dark-text);
+  margin-top: 1rem;
+  transition: color 0.3s;
 }
 
 .doc-link:hover {
-  background-color: var(--hover-green);
+  color: var(--highlight-orange);
 }
 
-/* === Boutons de navigation gauche/droite === */
-.scroll-left,
-.scroll-right {
+/* === Boutons de scroll gauche/droite === */
+.scroll-left, .scroll-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: orange;
+  background: var(--main-green);
   color: white;
   border: none;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 10;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.scroll-left {
-  left: 0;
+.scroll-left { left: 10px; }
+.scroll-right { right: 10px; }
+
+/* === Boutons circulaires pour navigation === */
+.scroll-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
-.scroll-right {
-  right: 0;
+.scroll-buttons button {
+  background-color: var(--highlight-orange);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* === Pied de page === */
-footer {
+.scroll-buttons button:hover {
+  background-color: #d97706;
+  transform: scale(1.1);
+}
+
+/* === Bouton de retour accueil === */
+.home-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--main-green);
+  color: white;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 20px;
   text-align: center;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: var(--neutral-text);
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* === Divers === */
-.hidden {
-  display: none;
+.home-button:hover {
+  background-color: var(--hover-green);
+  transform: scale(1.1);
+}
+
+/* === Footer global === */
+.global-footer {
+  font-size: 0.75rem;
+  width: 100%;
+  position: relative;
+  margin-top: 2rem;
+  text-align: center;
+  padding: 0.6rem;
+  background: none;
+  color: #777;
+}
+
+/* === Responsive (mobile) === */
+@media (max-width: 600px) {
+  #search-input {
+    width: 95%;
+  }
+  .bibli-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container, .grid, .bloc, .card {
+    width: 100% !important;
+    padding: 1rem;
+    margin: 0 auto;
+    flex-direction: column;
+    display: block;
+    box-sizing: border-box;
+  }
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
+  .btn, .button {
+    width: 100%;
+    font-size: 1rem;
+  }
+  input, textarea, select {
+    width: 100%;
+  }
 }
