@@ -1,32 +1,32 @@
 [
   {
     "label": "Communiqué de presse du CHPF - Journée du don d'organes 2022",
-    "url": "docs/chpf-communique-de-presse_don_organes-2022.pdf",
-    "image": "images/chpf-communique-de-presse_don_organes-2022.png",
+    "url": "bibliotheque/docs/chpf-communique-de-presse_don_organes-2022.pdf",
+    "image": "bibliotheque/images/chpf-communique-de-presse_don_organes-2022.png",
     "statut": "traite"
   },
   {
     "label": "Grippe espagnole - Îles sous le vent",
-    "url": "docs/grippe-espagnole-ile-sous-le-vent.pdf",
-    "image": "images/grippe-espagnole-ile-sous-le-vent.png",
+    "url": "bibliotheque/docs/grippe-espagnole-ile-sous-le-vent.pdf",
+    "image": "bibliotheque/images/grippe-espagnole-ile-sous-le-vent.png",
     "statut": "traite"
   },
   {
     "label": "Guide de présentation de l’école CJA santé",
-    "url": "docs/guide-presentation-ecole-cja-en-sante.pdf",
-    "image": "images/guide-presentation-ecole-cja-en-sante.png",
+    "url": "bibliotheque/docs/guide-presentation-ecole-cja-en-sante.pdf",
+    "image": "bibliotheque/images/guide-presentation-ecole-cja-en-sante.png",
     "statut": "traite"
   },
   {
     "label": "Histoire démographique de la Polynésie française",
-    "url": "docs/histoire-demographique.pdf",
-    "image": "images/histoire-demographique.png",
+    "url": "bibliotheque/docs/histoire-demographique.pdf",
+    "image": "bibliotheque/images/histoire-demographique.png",
     "statut": "traite"
   },
   {
     "label": "Statistiques SOS 2016-2021",
-    "url": "docs/SOS 2016-2021.pdf",
-    "image": "images/SOS 2016-2021.png",
+    "url": "bibliotheque/docs/SOS 2016-2021.pdf",
+    "image": "bibliotheque/images/SOS 2016-2021.png",
     "statut": "traite"
   }
 ]
