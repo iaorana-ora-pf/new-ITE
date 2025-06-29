@@ -1,151 +1,91 @@
-// === Script JS de la Bibliothèque ===
-// Chargement dynamique des documents depuis JSON + tri, recherche, scroll, admin
+// === Chargement dynamique de la bibliothèque ===
 
-// Vérifie si le mode admin est activé via l'URL
+// Détecte si l'URL contient admin=true
 const isAdmin = new URLSearchParams(window.location.search).get('admin') === 'true';
 
-// Charge les documents et les insère dans le DOM
-async function loadDocuments(sortOrder = 'az') {
-  const response = await fetch('./bibliotheque/bibliotheque.json');
-  let documents = await response.json();
+// Références DOM
+const bibliContainer = document.getElementById('bibli-container');
+const sortSelect = document.getElementById('sort-select');
+const searchInput = document.getElementById('search-input');
+const scrollLeftBtn = document.querySelector('.scroll-left');
+const scrollRightBtn = document.querySelector('.scroll-right');
 
-  // Tri alphabétique des documents selon leur libellé
-  documents.sort((a, b) => {
-    return sortOrder === 'az'
-      ? a.label.localeCompare(b.label)
-      : b.label.localeCompare(a.label);
+// Admin modal
+const adminBtn = document.getElementById('admin-access-btn');
+const adminModal = document.getElementById('admin-modal');
+const closeModal = document.getElementById('close-admin-modal');
+const codeInput = document.getElementById('admin-code-input');
+const validateBtn = document.getElementById('validate-admin-code');
+const errorMsg = document.getElementById('admin-error');
+
+// === Récupération des documents depuis bibliotheque.json ===
+let allDocuments = [];
+fetch('bibliotheque.json')
+  .then(res => res.json())
+  .then(data => {
+    allDocuments = data;
+    renderDocuments();
   });
 
-  const container = document.getElementById('bibli-container');
-  container.innerHTML = '';
+// === Affichage des documents ===
+function renderDocuments() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const sortOrder = sortSelect.value;
 
-  // Création des cartes document
-  documents.forEach(doc => {
+  let filtered = allDocuments.filter(doc =>
+    doc.label.toLowerCase().includes(searchTerm)
+  );
+
+  filtered.sort((a, b) => {
+    if (sortOrder === 'az') return a.label.localeCompare(b.label);
+    else return b.label.localeCompare(a.label);
+  });
+
+  bibliContainer.innerHTML = '';
+  filtered.forEach(doc => {
     const card = document.createElement('div');
     card.className = 'bibli-card';
 
-    // Titre du document
-    const title = document.createElement('h2');
-    title.classList.add('doc-title');
-    title.textContent = doc.label;
+    card.innerHTML = `
+      <h3 class="doc-title">${doc.label}</h3>
+      <img class="doc-img" src="${doc.image}" alt="${doc.label}">
+      <a class="doc-link" href="${doc.url}" target="_blank">Voir le document</a>
+      ${isAdmin ? `<p class="statut statut-${doc.statut}">${doc.statut}</p>` : ''}
+    `;
 
-    // Statut pour les admins (coloré)
-    if (isAdmin && doc.statut) {
-      const statutClass = {
-        'traite': 'statut-traite',
-        'a_finir': 'statut-a-finir',
-        'non_initie': 'statut-non-initie'
-      }[doc.statut];
-
-      if (statutClass) {
-        title.classList.add(statutClass);
-      }
-    }
-
-    // Image miniature
-    const image = document.createElement('img');
-    image.src = doc.image;
-    image.alt = "Illustration du document";
-    image.className = 'doc-img';
-
-    // Lien vers le PDF (via Google Viewer)
-    const link = document.createElement('a');
-    link.className = 'doc-link';
-    link.href = `https://docs.google.com/viewer?url=${encodeURIComponent(doc.url)}&embedded=true`;
-    link.target = '_blank';
-    link.textContent = "Voir le document";
-
-    // Insertion dans la carte
-    card.appendChild(title);
-    card.appendChild(image);
-    card.appendChild(link);
-    container.appendChild(card);
+    bibliContainer.appendChild(card);
   });
+
+  // Ajout d'une classe spéciale si admin actif
+  if (isAdmin) bibliContainer.classList.add('admin-visible');
 }
 
-// Initialisation dès chargement de la page
-document.addEventListener('DOMContentLoaded', () => {
-  loadDocuments('az');
+// === Filtres : recherche + tri ===
+sortSelect.addEventListener('change', renderDocuments);
+searchInput.addEventListener('input', renderDocuments);
 
-  // Tri dynamique selon le select
-  document.getElementById('sort-select').addEventListener('change', function () {
-    loadDocuments(this.value);
-  });
-
-  // Recherche par mot-clé
-  document.getElementById('search-input').addEventListener('input', function () {
-    const query = this.value.toLowerCase();
-    document.querySelectorAll('.bibli-card').forEach(card => {
-      const title = card.querySelector('.doc-title').textContent.toLowerCase();
-      card.style.display = title.includes(query) ? 'block' : 'none';
-    });
-  });
-
-  // Boutons de scroll
-  document.querySelector('.scroll-left').addEventListener('click', () => {
-    document.getElementById('bibli-container').scrollBy({ left: -300, behavior: 'smooth' });
-  });
-
-  document.querySelector('.scroll-right').addEventListener('click', () => {
-    document.getElementById('bibli-container').scrollBy({ left: 300, behavior: 'smooth' });
-  });
-
-  // Activation visuelle du mode admin
-  if (isAdmin) {
-    document.body.classList.add('admin-visible');
-  }
+// === Défilement latéral ===
+scrollLeftBtn.addEventListener('click', () => {
+  bibliContainer.scrollBy({ left: -400, behavior: 'smooth' });
+});
+scrollRightBtn.addEventListener('click', () => {
+  bibliContainer.scrollBy({ left: 400, behavior: 'smooth' });
 });
 
-// Code d'accès admin via prompt (fallback rapide)
-document.addEventListener("DOMContentLoaded", () => {
-  const adminBtn = document.getElementById("admin-toggle-btn");
-  if (adminBtn) {
-    adminBtn.addEventListener("click", () => {
-      const code = prompt("Code admin ?");
-      if (code === "bazinga") {
-        localStorage.setItem("isAdmin", "true");
-        window.location.reload();
-      } else {
-        alert("Code incorrect");
-      }
-    });
-  }
+// === Modale d'accès admin ===
+adminBtn.addEventListener('click', () => {
+  adminModal.classList.remove('hidden');
 });
 
-// Modal de saisie sécurisé pour le code admin
-document.addEventListener("DOMContentLoaded", () => {
-  const adminBtn = document.getElementById("admin-access-btn");
-  const adminModal = document.getElementById("admin-modal");
-  const closeModal = document.getElementById("close-admin-modal");
-  const submitBtn = document.getElementById("validate-admin-code");
-  const errorMsg = document.getElementById("admin-error");
+closeModal.addEventListener('click', () => {
+  adminModal.classList.add('hidden');
+});
 
-  if (adminBtn && adminModal) {
-    adminBtn.addEventListener("click", () => {
-      adminModal.classList.remove("hidden");
-      errorMsg.textContent = "";
-      document.getElementById("admin-code-input").value = "";
-    });
-
-    closeModal.addEventListener("click", () => {
-      adminModal.classList.add("hidden");
-    });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === adminModal) {
-        adminModal.classList.add("hidden");
-      }
-    });
-
-    submitBtn.addEventListener("click", () => {
-      const code = document.getElementById("admin-code-input").value.trim();
-      if (code === "bazinga") {
-        const url = new URL(window.location.href);
-        url.searchParams.set("admin", "true");
-        window.location.href = url.toString();
-      } else {
-        errorMsg.textContent = "Code incorrect.";
-      }
-    });
+validateBtn.addEventListener('click', () => {
+  const code = codeInput.value.trim();
+  if (code === 'ite2025') {
+    window.location.search = '?admin=true';
+  } else {
+    errorMsg.textContent = 'Code incorrect.';
   }
 });
