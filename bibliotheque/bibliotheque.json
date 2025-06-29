@@ -1,0 +1,40 @@
+[
+  {
+    "label": "CHPF - Don d'organes 2022",
+    "url": "docs/chpf-communique-de-presse_don_organes-2022.pdf",
+    "image": "images/chpf-communique-de-presse_don_organes-2022.png",
+    "statut": "traite"
+  },
+  {
+    "label": "Grippe espagnole - Îles sous le vent",
+    "url": "docs/grippe-espagnole-ile-sous-le-vent.pdf",
+    "image": "images/grippe-espagnole-ile-sous-le-vent.png",
+    "statut": "traite"
+  },
+  {
+    "label": "Guide de présentation de l’école CJA santé",
+    "url": "docs/guide-presentation-ecole-cja-en-sante.pdf",
+    "image": "images/guide-presentation-ecole-cja-en-sante.png",
+    "statut": "traite"
+  },
+  {
+    "label": "Histoire démographique de la Polynésie française",
+    "url": "docs/histoire-demographique.pdf",
+    "image": "images/histoire-demographique.png",
+    "statut": "traite"
+  },
+  {
+    "label": "Statistiques SOS 2016-2021",
+    "url": "docs/SOS 2016-2021.pdf",
+    "image": "images/SOS 2016-2021.png",
+    "statut": "traite"
+  }
+]
+
+/*
+  === Structure du JSON ===
+  - label : titre du document (affiché à l'utilisateur)
+  - url   : chemin vers le PDF (dans le dossier /docs/)
+  - image : chemin vers l'image miniature (dans le dossier /images/)
+  - statut: état de traitement du document (traite, a-finir, non-initie)
+*/
