@@ -30,11 +30,3 @@
     "statut": "traite"
   }
 ]
-
-/*
-  === Structure du JSON ===
-  - label : titre du document (affiché à l'utilisateur)
-  - url   : chemin vers le PDF (dans le dossier /docs/)
-  - image : chemin vers l'image miniature (dans le dossier /images/)
-  - statut: état de traitement du document (traite, a-finir, non-initie)
-*/
