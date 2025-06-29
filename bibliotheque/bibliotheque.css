@@ -1,21 +1,22 @@
-/* === Variables globales === */
+/* === Variables globales pour couleurs et polices (issues de index.css) === */
 :root {
-  --main-green: #048B9A;
-  --hover-green: #02616B;
-  --link-green: #048B9A;
-  --light-bg: #EDE7E3;
-  --neutral-text: #5F5F5F;
-  --dark-text: #1e2124;
+  --main-green: #048B9A;        /* Couleur principale */
+  --hover-green: #02616B;       /* Couleur survol bouton */
+  --link-green: #048B9A;        /* Couleur des liens */
+  --light-bg: #EDE7E3;          /* Fond clair */
+  --neutral-text: #5F5F5F;      /* Texte secondaire */
+  --dark-text: #1e2124;         /* Texte principal */
 }
 
 /* === Corps de la page === */
 body {
-  margin: 0;
-  font-family: 'Lato', sans-serif;
   background-color: white;
-  color: var(--neutral-text);
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
   height: 100vh;
   overflow: hidden;
+  color: var(--dark-text);
 }
 
 /* === Conteneur principal === */
@@ -23,15 +24,12 @@ body {
   padding: 2rem;
   max-width: 1400px;
   margin: auto;
-  position: relative;
   background-color: var(--light-bg);
 }
 
-/* === En-tête (titre + filtres) === */
+/* === Titre principal === */
 .bibli-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   margin-bottom: 2rem;
 }
 
@@ -41,13 +39,12 @@ body {
   margin-bottom: 1rem;
 }
 
-/* === Zone des filtres === */
+/* === Zone de tri et recherche === */
 .bibli-controls {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  width: 100%;
 }
 
 #sort-select,
@@ -56,30 +53,30 @@ body {
   font-size: 1rem;
   border: 2px solid var(--main-green);
   border-radius: 25px;
-  background-color: #f2f2f2;
+  background-color: white;
   color: var(--dark-text);
 }
 
-/* === Liste horizontale des cartes === */
+/* === Conteneur de documents (scroll horizontal) === */
 .bibli-container {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 1rem 0;
   gap: 2rem;
+  padding: 1rem 0;
 }
 
-/* === Carte individuelle de document === */
+/* === Carte de document === */
 .bibli-card {
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 1rem;
   min-width: 280px;
-  flex-shrink: 0;
   text-align: center;
   transition: transform 0.2s;
   border: 2px solid #e0e0e0;
+  flex-shrink: 0;
 }
 
 .bibli-card:hover {
@@ -117,13 +114,13 @@ body {
   background-color: var(--hover-green);
 }
 
-/* === Flèches de scroll gauche/droite === */
+/* === Boutons de navigation gauche/droite === */
 .scroll-left,
 .scroll-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--main-green);
+  background-color: orange;
   color: white;
   border: none;
   font-size: 2rem;
@@ -142,77 +139,15 @@ body {
   right: 0;
 }
 
-/* === Zone d'administration === */
-.admin-zone {
-  margin-top: 3rem;
+/* === Pied de page === */
+footer {
   text-align: center;
-}
-
-#admin-access-btn {
-  background-color: var(--main-green);
-  color: white;
-  padding: 0.6rem 1.5rem;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* === Boîte modale (admin) === */
-.modal {
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-  text-align: center;
-  border: 2px solid var(--main-green);
-}
-
-.close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--main-green);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--neutral-text);
 }
 
 /* === Divers === */
 .hidden {
   display: none;
-}
-
-.error-msg {
-  color: red;
-  margin-top: 0.5rem;
-}
-
-/* === Couleurs de statut visible en mode admin === */
-.admin-visible .statut-traite {
-  color: green;
-}
-
-.admin-visible .statut-a-finir {
-  color: orange;
-}
-
-.admin-visible .statut-non-initie {
-  color: red;
 }
