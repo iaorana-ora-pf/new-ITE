@@ -1,4 +1,3 @@
-/* === Variables globales === */
 :root {
   --main-green: #048B9A;
   --hover-green: #02616B;
@@ -10,7 +9,6 @@
   --sidebar-width: 340px;
 }
 
-/* === Corps de la page === */
 body {
   margin: 0;
   padding: 0;
@@ -18,28 +16,26 @@ body {
   background-color: white;
   color: var(--dark-text);
   height: 100%;
-}
+  }
 html, body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
 }
-
-/* === En-tête de la bibliothèque === */
 .bibli-header {
   text-align: center;
   padding: 2rem 1rem 1rem;
   background-color: white;
   color: white;
 }
+
 .bibli-header h1 {
   margin: 0 0 1rem;
   font-size: 2rem;
-  color: var(--main-green);
+  color: #048B9A;
 }
 
-/* === Recherche et tri === */
 #search-input {
   width: 80%;
   max-width: 600px;
@@ -49,6 +45,7 @@ html, body {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 .search-sort-container input,
 .search-sort-container select {
   font-size: 1rem;
@@ -58,11 +55,13 @@ html, body {
   justify-content: center;
   margin-bottom: 1rem;
 }
+
 .sort-container {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 }
+
 #sort-select {
   height: 46px;
   padding: 0.6rem 1.2rem;
@@ -76,7 +75,6 @@ html, body {
   transition: background-color 0.3s ease;
 }
 
-/* === Conteneur de cartes === */
 .bibli-container {
   flex: 1;
   display: flex;
@@ -85,13 +83,12 @@ html, body {
   padding: 1rem;
 }
 
-/* === Carte individuelle === */
 .bibli-card {
-  background-color: var(--light-bg);
+  background-color: #EDE7E3; /* fond beige clair */
   border-radius: 10px;
   padding: 1.5rem;
-  width: 280px;
-  height: 350px;
+  width: 280px; /* largeur fixe */
+  height: 350px; /* hauteur fixe */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,37 +96,41 @@ html, body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
 }
+
 .bibli-card:hover {
   transform: translateY(-4px);
 }
+
 .bibli-card h2 {
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .doc-img {
   max-width: 100%;
-  max-height: 180px;
+  max-height: 180px; /* Limite la hauteur */
   object-fit: contain;
   margin: 0 auto 1rem;
   display: block;
 }
+
 .doc-link {
-  margin-top: auto;
+  margin-top: auto; /* pousse en bas */
   text-decoration: none;
-  color: var(--dark-text);
+  color: #1e2124;
+  margin-top: 1rem;
   transition: color 0.3s;
 }
-.doc-link:hover {
-  color: var(--highlight-orange);
-}
 
-/* === Flèches scroll === */
+.doc-link:hover {
+  color: orange;
+}
 .scroll-left, .scroll-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--main-green);
+  background: #048B9A;
   color: white;
   border: none;
   border-radius: 50%;
@@ -148,7 +149,7 @@ html, body {
   margin: 1rem 0;
 }
 .scroll-buttons button {
-  background-color: var(--highlight-orange);
+  background-color: orange;
   border: none;
   border-radius: 50%;
   width: 48px;
@@ -162,17 +163,19 @@ html, body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   transition: background-color 0.3s, transform 0.2s;
 }
+
 .scroll-buttons button:hover {
-  background-color: #d97706;
+  background-color: #d97706; /* orange foncé */
   transform: scale(1.1);
 }
-
-/* === Bouton accueil === */
+/* ===================== */
+/*       HOME       */
+/* ===================== */
 .home-button {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: var(--main-green);
+  background-color: #048B9A;
   color: white;
   border-radius: 50%;
   padding: 12px;
@@ -183,12 +186,82 @@ html, body {
   text-decoration: none;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
+
 .home-button:hover {
-  background-color: var(--hover-green);
+  background-color: #02616B;
   transform: scale(1.1);
 }
 
-/* === Footer global === */
+/* ===================== */
+/*       Admin    */
+/* ===================== */
+.admin-visible .statut-traite { color: green; }
+.admin-visible .statut-a-finir { color: orange; }
+.admin-visible .statut-non-initie { color: red; }
+
+#admin-access-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #EDE7E3; 
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: none; /* Aucune ombre */
+  transition: background-color 0.2s ease;
+}
+
+#admin-access-btn:hover {
+  background-color: #e0e0e0; /* Légère variation au survol */
+}
+
+
+.admin-modal {
+  position: fixed;
+  z-index: 99999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-modal.hidden {
+  display: none;
+}
+
+.admin-modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.admin-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.admin-error-msg {
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ===================== */
+/*       Footer     */
+/* ===================== */
 .global-footer {
   font-size: 0.75rem;
   width: 100%;
@@ -198,13 +271,16 @@ html, body {
   padding: 0.6rem;
   background: none;
   color: #777;
-}
+ }
+/* ===================== */
+/*       Responsive    */
+/* ===================== */
 
-/* === Responsive === */
 @media (max-width: 600px) {
   #search-input {
     width: 95%;
   }
+
   .bibli-card {
     padding: 1rem;
   }
@@ -218,13 +294,16 @@ html, body {
     display: block;
     box-sizing: border-box;
   }
+
   h1, h2, h3 {
     font-size: 1.2rem;
   }
+
   .btn, .button {
     width: 100%;
     font-size: 1rem;
   }
+
   input, textarea, select {
     width: 100%;
   }
