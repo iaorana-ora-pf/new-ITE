@@ -20,7 +20,7 @@ const errorMsg = document.getElementById('admin-error');
 
 // === Récupération des documents depuis bibliotheque.json ===
 let allDocuments = [];
-fetch('bibliotheque.json')
+fetch('bibliotheque/bibliotheque.json')
   .then(res => res.json())
   .then(data => {
     allDocuments = data;
