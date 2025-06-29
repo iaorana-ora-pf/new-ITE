@@ -1,0 +1,153 @@
+/* === Variables globales pour les couleurs et styles === */
+:root {
+  --main-green: #048B9A;        /* Couleur principale */
+  --hover-green: #02616B;       /* Couleur au survol */
+  --link-green: #048B9A;        /* Liens */
+  --light-bg: #EDE7E3;          /* Arrière-plan clair */
+  --neutral-text: #5F5F5F;      /* Texte neutre */
+  --dark-text: #1e2124;         /* Texte foncé principal */
+}
+
+/* === Paramètres de base de la page === */
+body {
+  background-color: white;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* === Mise en page en 2 colonnes : image + contenu === */
+.welcome-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+/* === Colonne gauche : Image === */
+.welcome-image {
+  flex: 1;
+  height: 100%;
+}
+
+.welcome-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* Image couvre tout le bloc sans déformation */
+  display: block;
+}
+
+/* === Colonne droite : Contenu === */
+.welcome-content {
+  flex: 1;
+  padding: 3rem 2rem;       /* Espacement interne */
+  color: var(--dark-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* === Hiérarchie interne === */
+.welcome-content h1,
+.event-count-highlight,
+.welcome-content p,
+.welcome-buttons {
+  flex-shrink: 1;
+}
+
+.welcome-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  color: var(--main-green);
+}
+
+/* === Compteur d'événements === */
+.event-count-highlight {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--main-green);
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* === Paragraphes descriptifs === */
+.welcome-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  max-width: 600px;
+  text-align: left;
+}
+
+.welcome-content p:last-of-type {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* === Bloc de boutons === */
+.welcome-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* === Boutons stylisés === */
+.welcome-btn {
+  background-color: var(--main-green);
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-btn:hover {
+  background-color: var(--hover-green);
+}
+
+.welcome-btn i {
+  font-size: 1.1rem;
+}
+
+/* === Responsive mobile (tablettes et petits écrans) === */
+@media (max-width: 768px) {
+  .welcome-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .welcome-image {
+    width: 100%;
+    max-height: 120px;
+  }
+
+  .welcome-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .welcome-content {
+    width: 100%;
+  }
+}
