@@ -14,8 +14,8 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: hidden;
+   height: auto;
+  overflow: auto;
 }
 
 /* === Mise en page en 2 colonnes : image + contenu === */
@@ -23,6 +23,7 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+  min-height: 100vh; 
   height: auto; /* au lieu de 100vh */
   align-items: stretch;
 }
@@ -33,11 +34,12 @@ body {
   height: auto; /* empêche la contrainte 100% écran */
   display: flex;
   align-items: stretch;
+  flex-direction: column;
 }
 
 .welcome-image img {
   width: 100%;
-  height: auto; /* ❗️ne plus forcer height: 100% */
+  height: 100%;
   object-fit: contain;
   display: block;
 }
@@ -49,7 +51,7 @@ body {
   color: var(--dark-text);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
   height: 100%;
