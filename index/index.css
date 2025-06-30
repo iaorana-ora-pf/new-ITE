@@ -57,10 +57,17 @@ body, html {
 }
 
 .event-count-highlight {
-  font-size: 1.6rem;
+  font-size: 1.4rem; /* taille lisible */
   font-weight: bold;
-  color: #048B9A;
-  margin-bottom: 0.5rem;
+  color: var(--main-green);
+  margin-bottom: 1rem;
+  text-align: center; /* correction de Text-align */
+}
+
+#event-count-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--hover-green);
 }
 
 .content-column p {
