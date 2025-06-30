@@ -58,10 +58,10 @@ body, html {
 }
 
 .event-count-highlight {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #048B9A;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .content-column p {
