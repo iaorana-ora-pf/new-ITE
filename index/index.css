@@ -8,57 +8,52 @@
   --dark-text: #1e2124;         /* Texte foncé principal */
 }
 
-/* === Paramètres de base de la page === */
-body {
-  background-color: white;
-  font-family: 'Lato', sans-serif;
+/* === Deux colonnes de même hauteur === */
+html, body {
   margin: 0;
   padding: 0;
-   height: auto;
-  overflow: auto;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
-/* === Mise en page en 2 colonnes : image + contenu === */
-.welcome-layout {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-/* === Colonne gauche : Image === */
-.welcome-image {
-  flex: 1;
+.container {
   display: flex;
   align-items: stretch;
-  justify-content: center;
-}
-.welcome-image img {
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
-  display: block;
+  height: 100%;
 }
 
-/* === Colonne droite : Contenu === */
-.welcome-content {
-  flex: 1;
+.column {
+  width: 50%;
+  box-sizing: border-box;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-/* === Hiérarchie interne === */
-.welcome-content h1,
-.event-count-highlight,
-.welcome-content p,
-.welcome-buttons {
-  flex-shrink: 1;
+  justify-content: center;
 }
 
-.welcome-content h1 {
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
-  color: var(--main-green);
+.image-column {
+  background-color: #f8f8f8;
+  align-items: center;
+}
+
+.image-column img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.content-column {
+  background-color: #ffffff;
+}
+
+.content-column h1 {
+  margin-top: 0;
+}
+
+.content-column p {
+  margin: 1rem 0;
+  line-height: 1.5;
 }
 
 /* === Compteur d'événements === */
@@ -72,21 +67,7 @@ body {
   text-align: center;
 }
 
-/* === Paragraphes descriptifs === */
-.welcome-content p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin-bottom: 0.8rem;
-  max-width: 600px;
-  text-align: left;
-}
 
-.welcome-content p:last-of-type {
-  font-size: 0.75rem;
-  color: #777;
-  margin-top: 2rem;
-  text-align: center;
-  margin-bottom: 0.8rem;
 }
 
 /* === Bloc de boutons === */
@@ -120,29 +101,3 @@ body {
   font-size: 1.1rem;
 }
 
-/* === Responsive mobile (tablettes et petits écrans) === */
-@media (max-width: 768px) {
-  .welcome-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 1rem;
-  }
-
-  .welcome-image {
-    width: 100%;
-    max-height: 120px;
-  }
-
-  .welcome-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .welcome-content {
-    width: 100%;
-  }
-}
