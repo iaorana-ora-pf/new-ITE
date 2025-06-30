@@ -32,7 +32,6 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   background-color: #FDFBF7;
 }
 
@@ -67,7 +66,6 @@ body, html {
 .content-column p {
   font-size: 1.05rem;
   line-height: 1.6;
-  margin-bottom: 1.2rem;
 }
 
 .content-column p:last-of-type {
