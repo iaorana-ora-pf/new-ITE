@@ -23,19 +23,22 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100vh;
+  height: auto; /* au lieu de 100vh */
+  align-items: stretch;
 }
 
 /* === Colonne gauche : Image === */
 .welcome-image {
   flex: 1;
-  height: 100%;
+  height: auto; /* empêche la contrainte 100% écran */
+  display: flex;
+  align-items: stretch;
 }
 
 .welcome-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;       /* Image couvre tout le bloc sans déformation */
+  height: auto; /* ❗️ne plus forcer height: 100% */
+  object-fit: contain;
   display: block;
 }
 
