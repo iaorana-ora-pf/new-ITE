@@ -21,28 +21,26 @@ body {
 /* === Mise en page en 2 colonnes : image + contenu === */
 .welcome-layout {
   display: flex;
-  align-items: flex-start;
-  height: auto; /* plus de height: 100vh */
+  align-items: stretch; /* 🔥 les deux colonnes même hauteur */
+  width: 100%;
   min-height: 100vh;
 }
-
 /* === Colonne gauche : Image === */
-..welcome-image {
+.welcome-image {
   flex: 1;
-  padding: 2rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* optionnel */
 }
 
 .welcome-image img {
-  max-height: 100%;
-  max-width: 100%;
-  height: auto;
+  height: 100%;       /* 🔥 adapte à la hauteur de la colonne de droite */
   width: auto;
   object-fit: contain;
 }
-
 /* === Colonne droite : Contenu === */
 .welcome-content {
   flex: 1;
@@ -50,10 +48,9 @@ body {
   color: var(--dark-text);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
   box-sizing: border-box;
 }
-
 /* === Hiérarchie interne === */
 .welcome-content h1,
 .event-count-highlight,
