@@ -57,7 +57,7 @@ body, html {
 }
 
 .event-count-highlight {
-  font-size: 1.4rem; /* taille lisible */
+  font-size: 1.8rem; /* taille lisible */
   font-weight: bold;
   color: var(--main-green);
   margin-bottom: 0.5rem;
