@@ -32,12 +32,12 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FDFBF7;
+  background-color: white;
 }
 
 .image-column img {
-  max-height: 90%;
-  max-width: 90%;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
 }
 
