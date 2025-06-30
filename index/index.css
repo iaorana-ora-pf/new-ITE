@@ -22,20 +22,23 @@ body {
 .welcome-layout {
   display: flex;
   align-items: flex-start;
-  flex-wrap: nowrap;
+  height: auto; /* plus de height: 100vh */
+  min-height: 100vh;
 }
 
 /* === Colonne gauche : Image === */
-.welcome-image {
+..welcome-image {
   flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
   padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .welcome-image img {
   max-height: 100%;
+  max-width: 100%;
+  height: auto;
   width: auto;
   object-fit: contain;
 }
@@ -44,10 +47,11 @@ body {
 .welcome-content {
   flex: 1;
   padding: 3rem 2rem;
+  color: var(--dark-text);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 /* === Hiérarchie interne === */
