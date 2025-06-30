@@ -55,13 +55,18 @@ body, html {
   margin-bottom: 0.5rem;
   text-align: center;
 }
-
-.event-count-highlight {
-  font-size: 1.8rem; /* taille lisible */
-  font-weight: bold;
+.event-intro {
+  font-size: 1.3rem;       /* agrandit le texte */
+  font-weight: 500;
   color: var(--main-green);
-  margin-bottom: 0.5rem;
-  text-align: center; /* correction de Text-align */
+  text-align: center;      /* corrige la casse ! */
+  margin-bottom: 1.2rem;
+}
+
+#event-count-number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--hover-green);
 }
 .content-column p {
   font-size: 1rem;
