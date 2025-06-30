@@ -21,35 +21,35 @@ body {
 /* === Mise en page en 2 colonnes : image + contenu === */
 .welcome-layout {
   display: flex;
-  align-items: stretch; /* 🔥 les deux colonnes même hauteur */
   width: 100%;
-  min-height: 100vh;
+  align-items: stretch;     /* 🔥 égalise la hauteur entre les colonnes */
+  min-height: 100vh;        /* pleine hauteur si peu de contenu */
 }
 /* === Colonne gauche : Image === */
-.welcome-image {
-  flex: 1;
+welcome-image {
+  width: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;      /* ✅ centre verticalement */
+  justify-content: center;  /* ✅ centre horizontalement */
   padding: 2rem;
   box-sizing: border-box;
-  background-color: #f9f9f9; /* optionnel */
 }
-
 .welcome-image img {
-  height: 100%;       /* 🔥 adapte à la hauteur de la colonne de droite */
+  max-height: 100%;         /* ✅ respecte hauteur de la colonne */
+  max-width: 100%;          /* ✅ évite débordement horizontal */
+  height: auto;
   width: auto;
   object-fit: contain;
 }
 /* === Colonne droite : Contenu === */
 .welcome-content {
-  flex: 1;
+  width: 50%;               /* ✅ fixe la largeur */
   padding: 3rem 2rem;
-  color: var(--dark-text);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  box-sizing: border-box;
+  justify-content: space-between;
+  overflow-y: auto;
 }
 /* === Hiérarchie interne === */
 .welcome-content h1,
