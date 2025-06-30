@@ -7,97 +7,97 @@
   --neutral-text: #5F5F5F;      /* Texte neutre */
   --dark-text: #1e2124;         /* Texte foncé principal */
 }
-
-/* === Deux colonnes de même hauteur === */
-html, body {
+/* === Structure de base === */
+body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
   font-family: 'Lato', sans-serif;
+  height: 100%;
+  background: white;
 }
 
 .container {
   display: flex;
-  align-items: stretch;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .column {
+  flex: 1;
   width: 50%;
   box-sizing: border-box;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
+/* === Colonne gauche : image === */
 .image-column {
-  background-color: #f8f8f8;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #FDFBF7;
 }
 
 .image-column img {
-  max-width: 100%;
   max-height: 100%;
-  height: auto;
+  max-width: 100%;
   object-fit: contain;
 }
 
+/* === Colonne droite : contenu === */
 .content-column {
-  background-color: #ffffff;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #1e2124;
 }
 
 .content-column h1 {
-  margin-top: 0;
+  color: #048B9A;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.event-count-highlight {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #048B9A;
+  margin-bottom: 2rem;
 }
 
 .content-column p {
-  margin: 1rem 0;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
 }
 
-/* === Compteur d'événements === */
-.event-count-highlight {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--main-green);
-  display: block;
-  width: 100%;
-  text-align: center;
+.content-column p:last-of-type {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 2rem;
 }
 
-
-}
-
-/* === Bloc de boutons === */
+/* === Boutons === */
 .welcome-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
+  margin: 2rem 0;
 }
 
-/* === Boutons stylisés === */
 .welcome-btn {
-  background-color: var(--main-green);
+  background-color: #048B9A;
   color: white;
-  text-decoration: none;
   padding: 0.9rem 1.5rem;
   border-radius: 8px;
-  font-size: 1rem;
   font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .welcome-btn:hover {
-  background-color: var(--hover-green);
+  background-color: #02616B;
 }
-
-.welcome-btn i {
-  font-size: 1.1rem;
-}
-
