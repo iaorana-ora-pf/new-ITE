@@ -22,34 +22,27 @@ body {
 .welcome-layout {
   display: flex;
   width: 100%;
-  align-items: stretch;     /* 🔥 égalise la hauteur entre les colonnes */
-  min-height: 100vh;        /* pleine hauteur si peu de contenu */
+  height: auto;
+  align-items: stretch;
 }
 /* === Colonne gauche : Image === */
-welcome-image {
+.welcome-image {
   width: 50%;
-  display: flex;
-  align-items: center;      /* ✅ centre verticalement */
-  justify-content: center;  /* ✅ centre horizontalement */
-  padding: 2rem;
   box-sizing: border-box;
 }
 .welcome-image img {
-  max-height: 100%;         /* ✅ respecte hauteur de la colonne */
-  max-width: 100%;          /* ✅ évite débordement horizontal */
-  height: auto;
-  width: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  display: block;
 }
 /* === Colonne droite : Contenu === */
 .welcome-content {
-  width: 50%;               /* ✅ fixe la largeur */
-  padding: 3rem 2rem;
+  width: 50%;
+  padding: 2rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto;
 }
 /* === Hiérarchie interne === */
 .welcome-content h1,
