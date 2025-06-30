@@ -1,38 +1,29 @@
-<!-- Page d'accueil du projet 'ITE -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <!-- Informations de base -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ITE est une base de connaissances sur la santé publique en Polynésie française." />
   <title>Projet 'ITE</title>
-
   <!-- Feuilles de style -->
   <link rel="stylesheet" href="index/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+ 
 <body>
-  <!-- Conteneur principal avec image et contenu -->
-  <main class="welcome-layout">
-
+  <div class="container">
     <!-- Colonne gauche : image d'accueil -->
-    <div class="welcome-image">
-      <img src="index/accueil.png" alt="Illustration ITE" />
+    <div class="column image-column">
+      <img src="index/accueil.png" alt="Illustration ITE">
     </div>
-
-    <!-- Colonne droite : contenu textuel et navigation -->
-    <div class="welcome-content">
+   <!-- Colonne droite : contenu textuel et navigation -->
+   <div class="column content-column">
       <h1>Bienvenue sur 'ITE</h1>
-
-      <!-- Compteur dynamique d'événements -->
       <p class="event-count-highlight">
         Explorez et plongez dans les détails de
         <span id="event-count-number">0</span>
         événements de santé publique en Polynésie française à travers une frise chronologique interactive.
       </p>
-
-      <!-- Description textuelle du projet -->
       <p>'ITE est une base de connaissances qui rassemble, organise et partage des informations sur la santé publique en Polynésie française.</p>
       <p>Grâce à ce projet, vous pouvez explorer les événements par année, catégorie ou mots-clés, et accéder à des fiches descriptives.
         Les documents liés peuvent être consultés directement depuis ces fiches ou en naviguant dans la bibliothèque.</p>
@@ -40,7 +31,7 @@
         aux contributions et aux données collectées au fil du temps.</p>
       <p>N’hésitez pas à proposer un événement, chaque contribution sera étudiée avec attention.</p>
 
-      <!-- Boutons de navigation vers autres pages -->
+     <!-- Boutons de navigation vers autres pages -->
       <div class="welcome-buttons">
         <a href="frise.html" class="welcome-btn"><i class="fas fa-search"></i> Frise</a>
         <a href="bibliotheque.html" class="welcome-btn"><i class="fas fa-file-alt"></i> Bibliothèque</a>
@@ -51,7 +42,6 @@
       <!-- Mention légale / droits -->
       <p>Projet'ITE - © 2025 – Tous droits réservés</p>
      </div>
-  </main>
 
   <!-- Script JS pour compter les événements validés -->
   <script src="index/accueil.js"></script>
